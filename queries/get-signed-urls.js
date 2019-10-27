@@ -19,7 +19,6 @@ const getArimaUrls = async (params) => {
     return urls;
 }
 
-
 const getNNUrls = async (params) => {
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
 
