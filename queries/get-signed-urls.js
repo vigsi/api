@@ -4,40 +4,29 @@ const bucketName = "vigsi-data-processed";
 
 //TODO: Only return URLs that have an actual object behind them
 
-const getArimaUrls = async (params) => {
-    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
-
+const requestUrls = async (hours, algorithm) => {
     let urlPromises = []
 
     await asyncUtils.asyncForEach(hours, async (hour) => {
         var params = {
             Bucket: bucketName,
-            Key: hour.split('T')[0] + "/arima/" + hour
+            Key: hour.split('T')[0] + "/" + algorithm + "/" + hour
         }
         let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params);
         urlPromises.push(urlPromise);
     }); 
 
-    let urls = await Promise.all(urlPromises);
-    return urls;
+    return await Promise.all(urlPromises);
+}
+
+const getArimaUrls = async (params) => {
+    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
+    return await requestUrls(hours, "arima");
 }
 
 const getNNUrls = async (params) => {
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
-
-    let urlPromises = []
-
-    await asyncUtils.asyncForEach(hours, async (hour) => {
-        var params = {
-            Bucket: bucketName,
-            Key: hour.split('T')[0] + "/nn/" + hour
-        }
-        let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params);
-        urlPromises.push(urlPromise);
-    }); 
-
-    let urls = await Promise.all(urlPromises);
-    return urls;
+    return await requestUrls(hours, "nn");
 }
 
 module.exports = {
