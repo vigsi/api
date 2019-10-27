@@ -22,6 +22,9 @@ Inputs:
     end: ISO 8601 date string
     example: `/api/arima/2019-10-27T06:00:00.000Z&2019-10-28T07:00:00.000Z`
 
+Output:
+    Array of signed URLs
+
 #`/api/nn/:start&:end`
 
 Inputs: 
@@ -32,3 +35,6 @@ Inputs:
     start: ISO 8601 date string
     end: ISO 8601 date string
     example: `/api/arima/2019-10-27T06:00:00.000Z&2019-10-28T07:00:00.000Z`
+
+Output:
+    Array of signed URLs
