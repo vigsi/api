@@ -11,7 +11,7 @@ You will be able to hit the API on localhost:8080
 
 ##Routes:
 
-#/api/arima/:start&:end
+#`/api/arima/:start&:end`
 
 Inputs: 
 
@@ -22,7 +22,7 @@ Inputs:
     end: ISO 8601 date string
     example: `/api/arima/2019-10-27T06:00:00.000Z&2019-10-28T07:00:00.000Z`
 
-#/api/nn/:start&:end
+#`/api/nn/:start&:end`
 
 Inputs: 
 
