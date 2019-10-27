@@ -3,9 +3,6 @@ const asyncUtils = require('../util/async-utils');
 const bucketName = "vigsi-data-processed";
 
 const getArimaUrls = async (params) => {
-    console.log("hello arima!");
-    console.log(params);
-
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
 
     let urls = []
@@ -23,9 +20,21 @@ const getArimaUrls = async (params) => {
 }
 
 
-const getNNUrls = (params) => {
-    console.log("hello nn!")
-    console.log(params);
+const getNNUrls = async (params) => {
+    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
+
+    let urls = []
+
+    await asyncUtils.asyncForEach(hours, async (hour) => {
+        var params = {
+            Bucket: bucketName,
+            Key: hour.split('T')[0] + "/nn/" + hour
+        }
+        let url = await asyncUtils.getSignedUrlPromise('getObject', params);
+        urls.push(url);
+    }); 
+
+    return urls;
 }
 
 module.exports = {

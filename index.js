@@ -9,6 +9,11 @@ app.get('/api/arima/:start&:end', asyncUtils.asyncMiddleware(async (req, res, ne
         res.send(urls);
 }));
 
+app.get('/api/nn/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next) => {
+    const urls = await urlQueries.getNNUrls(req.params);
+    res.send(urls);
+}));
+
 
 app.listen(8080, function () {
   console.log('VIGSI API listening on port 8080!');
