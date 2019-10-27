@@ -4,7 +4,8 @@ const bucketName = "vigsi-data-processed";
 
 //TODO: Only return URLs that have an actual object behind them
 
-const requestUrls = async (hours, algorithm) => {
+const requestUrls = async (params, algorithm) => {
+    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
     let urlPromises = []
 
     await asyncUtils.asyncForEach(hours, async (hour) => {
@@ -20,13 +21,11 @@ const requestUrls = async (hours, algorithm) => {
 }
 
 const getArimaUrls = async (params) => {
-    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
-    return await requestUrls(hours, "arima");
+    return await requestUrls(params, "arima");
 }
 
 const getNNUrls = async (params) => {
-    let hours = await timeUtils.computeAllHours(params['start'], params['end']);
-    return await requestUrls(hours, "nn");
+    return await requestUrls(params, "nn");
 }
 
 module.exports = {
