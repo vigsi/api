@@ -7,34 +7,36 @@ const bucketName = "vigsi-data-processed";
 const getArimaUrls = async (params) => {
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
 
-    let urls = []
+    let urlPromises = []
 
     await asyncUtils.asyncForEach(hours, async (hour) => {
         var params = {
             Bucket: bucketName,
             Key: hour.split('T')[0] + "/arima/" + hour
         }
-        let url = await asyncUtils.getSignedUrlPromise('getObject', params);
-        urls.push(url);
+        let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params);
+        urlPromises.push(urlPromise);
     }); 
 
+    let urls = await Promise.all(urlPromises);
     return urls;
 }
 
 const getNNUrls = async (params) => {
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
 
-    let urls = []
+    let urlPromises = []
 
     await asyncUtils.asyncForEach(hours, async (hour) => {
         var params = {
             Bucket: bucketName,
             Key: hour.split('T')[0] + "/nn/" + hour
         }
-        let url = await asyncUtils.getSignedUrlPromise('getObject', params);
-        urls.push(url);
+        let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params);
+        urlPromises.push(urlPromise);
     }); 
 
+    let urls = await Promise.all(urlPromises);
     return urls;
 }
 
