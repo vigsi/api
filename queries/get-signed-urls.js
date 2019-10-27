@@ -17,7 +17,7 @@ const requestUrls = async (params, algorithm) => {
         urlPromises.push(urlPromise);
     }); 
 
-    return await Promise.all(urlPromises);
+    return Promise.all(urlPromises);
 }
 
 const getArimaUrls = async (params) => {
