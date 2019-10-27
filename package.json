@@ -1,0 +1,23 @@
+{
+  "name": "vigsi-api",
+  "version": "1.0.0",
+  "description": "API for retrieving results of solar irradience predictions",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vigsi/api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vigsi/api/issues"
+  },
+  "homepage": "https://github.com/vigsi/api#readme"
+}
