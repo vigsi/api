@@ -3,7 +3,7 @@
 #Running locally:
 1. Clone repo
 2. Create `auth/` directory into the root of the project
-3. Copy your credentials.js file into the auth directory
+3. Copy your `credentials.js` file into the auth directory
 4. Run `npm run build-local` to build the image
 5. Run `npm run run-local` to start the API locally
 
