@@ -4,6 +4,7 @@
   "description": "API for retrieving results of solar irradience predictions",
   "main": "index.js",
   "dependencies": {
+    "aws-sdk": "^2.556.0",
     "express": "^4.17.1"
   },
   "devDependencies": {},

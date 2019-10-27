@@ -15,7 +15,7 @@ const computeAllHours = async (start, end) => {
     for (let i = 0; i <= diff; i++){
         hours.push(new Date(startEpoch + (36e5*i)).toISOString().replace(/:/g, ''));
     }
-    hours.push(new Date(endEpoch).toISOString());
+    hours.push(new Date(endEpoch).toISOString().replace(/:/g, ''));
 
     return hours;
 

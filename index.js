@@ -1,6 +1,6 @@
 const express = require('express');
 const urlQueries = require('./queries/get-signed-urls');
-const asyncUtils = require('./util/async-middleware');
+const asyncUtils = require('./util/async-utils');
 const app = express();
 
 //2019-10-27T06:00:00.000Z&2019-10-27T07:00:00.000Z
