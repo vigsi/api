@@ -2,6 +2,8 @@ const timeUtils = require('../util/date-operations');
 const asyncUtils = require('../util/async-utils');
 const bucketName = "vigsi-data-processed";
 
+//TODO: Only return URLs that have an actual object behind them
+
 const getArimaUrls = async (params) => {
     let hours = await timeUtils.computeAllHours(params['start'], params['end']);
 
