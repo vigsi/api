@@ -14,10 +14,10 @@ const asyncForEach = async (array, callback) => {
   }
 }
 
-const getSignedUrlPromise = (operation, params) =>
+const getSignedUrlPromise = (operation, params, timestamp) =>
   new Promise((resolve, reject) => {
     s3.getSignedUrl(operation, params, (err, url) => {
-      err ? reject(err) : resolve(url);
+      err ? reject(err) : resolve({url: url, time: timestamp});
     });
 });
 

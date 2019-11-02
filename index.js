@@ -14,6 +14,11 @@ app.get('/api/nn/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next)
     res.send(urls);
 }));
 
+app.get('/api/meas/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next) => {
+  const urls = await urlQueries.getMeasUrls(req.params);
+  res.send(urls);
+}));
+
 
 app.listen(8080, function () {
   console.log('VIGSI API listening on port 8080!');

@@ -13,7 +13,7 @@ const requestUrls = async (params, algorithm) => {
             Bucket: bucketName,
             Key: hour.split('T')[0] + "/" + algorithm + "/" + hour
         }
-        let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params);
+        let urlPromise = asyncUtils.getSignedUrlPromise('getObject', params, hour);
         urlPromises.push(urlPromise);
     }); 
 
@@ -28,7 +28,12 @@ const getNNUrls = async (params) => {
     return await requestUrls(params, "nn");
 }
 
+const getMeasUrls = async (params) => {
+    return await requestUrls(params, "meas");
+}
+
 module.exports = {
     getArimaUrls,
-    getNNUrls
+    getNNUrls,
+    getMeasUrls
 }

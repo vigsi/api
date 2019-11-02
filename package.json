@@ -9,6 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-local": "docker build -t vigsi-api-local -f ./Docker/Dockerfile-local .",
     "run-local": "docker run -p 8080:8080 vigsi-api-local"
