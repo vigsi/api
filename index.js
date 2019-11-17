@@ -19,6 +19,20 @@ app.get('/api/meas/:start&:end', asyncUtils.asyncMiddleware(async (req, res, nex
   res.send(urls);
 }));
 
+app.get('/api/measdaily/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next) => {
+  const urls = await urlQueries.getMeasDailyUrls(req.params);
+  res.send(urls);
+}));
+
+app.get('/api/measmonthly/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next) => {
+  const urls = await urlQueries.getMeasMonthlyUrls(req.params);
+  res.send(urls);
+}));
+
+app.get('/api/measyearly/:start&:end', asyncUtils.asyncMiddleware(async (req, res, next) => {
+  const urls = await urlQueries.getMeasYearlyUrls(req.params);
+  res.send(urls);
+}));
 
 app.listen(8080, function () {
   console.log('VIGSI API listening on port 8080!');

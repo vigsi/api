@@ -1,6 +1,6 @@
-##VIGSI API
+# VIGSI API
 
-#Running locally:
+## Running locally:
 1. Clone repo
 2. Run npm install
 3. Create `auth/` directory into the root of the project
@@ -10,14 +10,14 @@
 
 You will be able to hit the API on localhost:8080
 
-##Routes:
+## Routes:
 
 #`/api/arima/:start&:end`
 
 Inputs: 
 
     Description:
-        Generate signed URLS for all hourly arima data between two timestamps
+        Generate signed URLS for all hourly ARIMA data between two timestamps
 
     start: ISO 8601 date string
     end: ISO 8601 date string
